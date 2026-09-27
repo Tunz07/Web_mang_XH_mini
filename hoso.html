@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hồ sơ - MiniSocial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Be Vietnam Pro', Arial, sans-serif !important;
+            color: #1c1e21;
+            max-width: 700px;
+            margin: 0 auto !important;
+            padding: 28px 20px 60px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1877f2;
+            margin: 0 0 18px;
+        }
+
+        nav {
+            display: block;
+            background: #ffffff;
+            border: 1px solid #d3d9de;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            color: #1877f2;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 6px;
+            border-radius: 6px;
+            transition: background .15s ease;
+        }
+        nav a:hover { background: #e7f3ff; }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d3d9de;
+            margin: 18px 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #050505;
+            margin: 6px 0 4px;
+        }
+
+        h2::before {
+            content: "👤";
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #050505;
+            margin: 22px 0 8px;
+        }
+
+        p {
+            margin: 4px 0;
+        }
+
+        p:has(> button) button,
+        button {
+            font-family: inherit;
+            border: 1px solid #ccd0d5;
+            background: #f0f2f5;
+            color: #050505;
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .15s ease;
+        }
+        button:hover { background: #e4e6eb; }
+
+        textarea {
+            font-family: inherit;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            padding: 8px;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 3px rgba(24,119,242,0.15);
+        }
+
+        #__followPanel {
+            border-radius: 10px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body bgcolor="#eaf3ff">
+
+<h1>👤 Hồ sơ cá nhân</h1>
+
+<nav>
+    <a href="index__3_.html">🏠 Trang chủ</a> |
+    <a href="banbe.html">👥 Bạn bè</a> |
+    <a href="tinnhan (4).html">💬 Tin nhắn</a> |
+    <a href="thongbao.html">🔔 Thông báo</a> |
+    <a href="hoso.html">👤 Hồ sơ</a>
+</nav>
+
+<hr>
+
+<h2>Nguyễn Văn A</h2>
+<p>@nguyenvana</p>
+<p>💻 Web Developer</p>
+<p>120 bài viết · 350 người theo dõi · 180 đang theo dõi</p>
+
+<h3>Giới thiệu</h3>
+<p>Mình đang học HTML và xây dựng MiniSocial.</p>
+
+<script>
+
+(function () {
+  "use strict";
+
+  function escapeHTML(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+
+  function makeEditable(pElement, placeholder) {
+    if (!pElement) return;
+
+    const editBtn = document.createElement("button");
+    editBtn.type = "button";
+    editBtn.textContent = "✏️ Chỉnh sửa";
+    editBtn.style.cssText =
+      "margin-left:10px;font-size:12px;padding:2px 8px;cursor:pointer;";
+    pElement.appendChild(document.createTextNode(" "));
+    pElement.appendChild(editBtn);
+
+    editBtn.addEventListener("click", function () {
+      const currentText = pElement.firstChild.textContent.trim();
+
+      const editWrap = document.createElement("div");
+      editWrap.innerHTML =
+        '<textarea rows="2" style="width:80%;padding:6px;">' +
+        currentText.replace(/</g, "&lt;") +
+        "</textarea><br>" +
+        '<button type="button" class="__saveBtn" style="margin-top:4px;padding:4px 10px;cursor:pointer;">💾 Lưu</button> ' +
+        '<button type="button" class="__cancelBtn" style="margin-top:4px;padding:4px 10px;cursor:pointer;">Hủy</button>';
+
+      pElement.style.display = "none";
+      pElement.parentElement.insertBefore(editWrap, pElement);
+
+      editWrap.querySelector(".__cancelBtn").addEventListener("click", function () {
+        editWrap.remove();
+        pElement.style.display = "";
+      });
+
+      editWrap.querySelector(".__saveBtn").addEventListener("click", function () {
+        const newVal = editWrap.querySelector("textarea").value.trim();
+        if (newVal) {
+          pElement.firstChild.textContent = newVal + " ";
+        }
+        editWrap.remove();
+        pElement.style.display = "";
+      });
+    });
+  }
+
+  const allPs = document.querySelectorAll("p");
+  let jobP = null;
+  allPs.forEach(function (p) {
+    if (/Web Developer|Developer|developer/.test(p.textContent) && !jobP) {
+      jobP = p;
+    }
+  });
+  makeEditable(jobP, "Nghề nghiệp");
+
+  const introHeading = Array.from(document.querySelectorAll("h3")).find(
+    (h) => h.textContent.indexOf("Giới thiệu") !== -1
+  );
+  if (introHeading) {
+    const introP = introHeading.nextElementSibling;
+    makeEditable(introP, "Giới thiệu về bạn");
+  }
+
+
+  const FAKE_FOLLOWERS = ["Trần Thị B", "Lê Hoàng C", "Phạm Minh D", "Nguyễn Minh", "Trần Lan", "Vũ Thu Hà", "Đỗ Quang Huy"];
+
+  const statsP = Array.from(document.querySelectorAll("p")).find(
+    (p) => p.textContent.indexOf("người theo dõi") !== -1
+  );
+
+  if (statsP) {
+    const parts = statsP.textContent.split("·").map((s) => s.trim());
+    statsP.innerHTML = "";
+
+    parts.forEach(function (part, idx) {
+      const span = document.createElement("span");
+      span.textContent = part;
+
+      if (idx === 1 || idx === 2) {
+        span.style.cursor = "pointer";
+        span.style.color = "#1877f2";
+        span.title = "Bấm để xem danh sách";
+        span.addEventListener("click", function () {
+          toggleFollowList(span, idx === 1 ? "Người theo dõi" : "Đang theo dõi");
+        });
+      }
+
+      statsP.appendChild(span);
+      if (idx < parts.length - 1) {
+        statsP.appendChild(document.createTextNode(" · "));
+      }
+    });
+  }
+
+  function toggleFollowList(anchorSpan, title) {
+    let panel = document.getElementById("__followPanel");
+    if (panel) {
+      const wasFor = panel.dataset.for;
+      panel.remove();
+      if (wasFor === title) return; 
+    }
+
+    panel = document.createElement("div");
+    panel.id = "__followPanel";
+    panel.dataset.for = title;
+    panel.style.cssText =
+      "border:1px solid #ccc;background:#fff;padding:10px;margin-top:8px;max-width:320px;";
+
+    const shuffled = FAKE_FOLLOWERS.slice().sort(() => Math.random() - 0.5).slice(0, 5);
+    panel.innerHTML =
+      "<b>" + title + "</b><hr>" +
+      shuffled
+        .map((n) => "<div style='padding:3px 0;'>👤 " + escapeHTML(n) + "</div>")
+        .join("");
+
+    anchorSpan.closest("p").insertAdjacentElement("afterend", panel);
+  }
+})();
+</script>
+</body>
+</html>

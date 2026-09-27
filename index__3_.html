@@ -15,7 +15,124 @@
         background: #f0f2f5 !important;
       }
 
-      
+      .mini-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .sidebar-card,
+      .content-card,
+      .post-card,
+      .suggest-card,
+      .contact-card,
+      .footer-bar {
+        background: #ffffff !important;
+        border: 1px solid #d3d9de;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .panel-title {
+        font-size: 15px;
+        color: #1877f2;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .quick-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        line-height: 2;
+      }
+
+      .quick-links li {
+        padding: 4px 6px;
+        border-radius: 8px;
+        transition: background 0.15s ease;
+      }
+
+      .quick-links li:hover {
+        background: #f2f7ff;
+      }
+
+      .quick-links a {
+        color: #1c1e21;
+        text-decoration: none;
+      }
+
+      .user-avatar {
+        width: 90px;
+        height: 90px;
+        background: #d8dadf;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        font-size: 30px;
+      }
+
+      .post-card td,
+      .content-card td,
+      .sidebar-card td,
+      .suggest-card td,
+      .contact-card td {
+        vertical-align: top;
+      }
+
+      .status-meta {
+        color: #65676b;
+        font-size: 11px;
+      }
+
+      .post-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .post-actions button,
+      .comment-box input[type="submit"] {
+        border-radius: 6px;
+      }
+
+      .comment-box {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px solid #f0f2f5;
+      }
+
+      .comment-box input[type="text"] {
+        width: 78%;
+        padding: 7px 10px;
+        border: 1px solid #ccd0d5;
+        border-radius: 6px;
+        background: #f7f8fa;
+      }
+
+      .friend-pill {
+        display: inline-block;
+        background: #e7f3ff;
+        color: #1877f2;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 6px;
+      }
+
+      .friend-row {
+        padding: 6px 0;
+      }
+
+      .footer-bar {
+        border-top: 1px solid #d3d9de;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
       body > table:first-of-type {
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
         position: sticky;
@@ -202,6 +319,7 @@
     <br />
 
     <table
+      class="mini-shell"
       width="1100"
       align="center"
       cellpadding="0"
@@ -220,21 +338,7 @@
           >
             <tr>
               <td align="center">
-                <table
-                  bgcolor="#d8dadf"
-                  width="90"
-                  height="90"
-                  border="0"
-                  cellpadding="0"
-                  cellspacing="0"
-                  style="border-radius: 50%"
-                >
-                  <tr>
-                    <td align="center" valign="middle">
-                      <font size="4">👤</font>
-                    </td>
-                  </tr>
-                </table>
+                <div class="user-avatar">👤</div>
                 <br />
                 <font size="4"><b>Nguyễn Văn A</b></font
                 ><br />
@@ -249,13 +353,7 @@
               <td>
                 <font size="3">
                   <b>Lối tắt nhanh:</b>
-                  <ul
-                    style="
-                      list-style-type: none;
-                      padding-left: 0;
-                      line-height: 2;
-                    "
-                  >
+                  <ul class="quick-links">
                     <li>
                       <a href="index_3_.html" style="text-decoration: none"
                         >📰 <b>Bảng tin chính</b></a
@@ -299,7 +397,7 @@
           >
             <tr>
               <td>
-                <font size="3" color="#1877f2"><b>✏️ Tạo bài viết mới</b></font>
+                <span class="panel-title">✏️ Tạo bài viết mới</span>
                 <hr color="#f0f2f5" size="1" />
 
                 <form action="#" method="post" enctype="multipart/form-data">
@@ -450,31 +548,38 @@
                   </tr>
                   <tr>
                     <td>
-                      <button
-                        type="button"
-                        style="padding: 4px 10px; cursor: pointer"
-                      >
-                        👍 Thích
-                      </button>
-                      <button
-                        type="button"
-                        style="padding: 4px 10px; cursor: pointer"
-                      >
-                        💬 Bình luận
-                      </button>
-                      <button
-                        type="button"
-                        style="padding: 4px 10px; cursor: pointer"
-                      >
-                        ↗ Chia sẻ
-                      </button>
+                      <div class="post-actions">
+                        <button
+                          type="button"
+                          style="padding: 4px 10px; cursor: pointer"
+                        >
+                          👍 Thích
+                        </button>
+                        <button
+                          type="button"
+                          style="padding: 4px 10px; cursor: pointer"
+                        >
+                          💬 Bình luận
+                        </button>
+                        <button
+                          type="button"
+                          style="padding: 4px 10px; cursor: pointer"
+                        >
+                          ↗ Chia sẻ
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 </table>
 
                 <br />
 
-                <form action="#" method="post" style="margin: 0">
+                <form
+                  action="#"
+                  method="post"
+                  style="margin: 0"
+                  class="comment-box"
+                >
                   <table
                     width="100%"
                     cellpadding="0"
@@ -591,11 +696,11 @@
           >
             <tr>
               <td>
-                <font size="3"><b>👥 Gợi ý kết bạn</b></font>
+                <span class="panel-title">👥 Gợi ý kết bạn</span>
                 <hr color="#e4e6eb" size="1" />
 
                 <table width="100%" cellpadding="4" cellspacing="0" border="0">
-                  <tr>
+                  <tr class="friend-row">
                     <td width="35">👤</td>
                     <td>
                       <font size="2"><b>Lê Hoàng C</b></font
@@ -644,7 +749,7 @@
           >
             <tr>
               <td>
-                <font size="3"><b>🟢 Người liên hệ (Online)</b></font>
+                <span class="panel-title">🟢 Người liên hệ (Online)</span>
                 <hr color="#e4e6eb" size="1" />
                 <font size="2">
                   <p>
@@ -682,6 +787,7 @@
 
     <br /><br />
     <table
+      class="footer-bar"
       width="100%"
       bgcolor="#ffffff"
       cellpadding="15"
@@ -717,7 +823,6 @@
           });
         }
 
-  
         function findStatsNode(postBox) {
           const candidates = postBox.querySelectorAll("font, td");
           for (const el of candidates) {

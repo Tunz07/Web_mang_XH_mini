@@ -4,120 +4,128 @@
     <meta charset="UTF-8" />
     <title>Tin nhắn - MiniSocial</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap");
 
-        * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Be Vietnam Pro', Arial, sans-serif !important;
-            color: #1c1e21;
-            max-width: 700px;
-            margin: 0 auto !important;
-            padding: 28px 20px 60px;
-            line-height: 1.6;
-        }
+      body {
+        font-family: "Be Vietnam Pro", Arial, sans-serif !important;
+        color: #1c1e21;
+        max-width: 700px;
+        margin: 0 auto !important;
+        padding: 28px 20px 60px;
+        line-height: 1.6;
+      }
 
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1877f2;
-            margin: 0 0 18px;
-        }
+      h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1877f2;
+        margin: 0 0 18px;
+      }
 
-        nav {
-            display: block;
-            background: #ffffff;
-            border: 1px solid #d3d9de;
-            border-radius: 10px;
-            padding: 10px 16px;
-            font-size: 14px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+      nav {
+        display: block;
+        background: #ffffff;
+        border: 1px solid #d3d9de;
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 14px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
 
-        nav a {
-            color: #1877f2;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 4px 6px;
-            border-radius: 6px;
-            transition: background .15s ease;
-        }
-        nav a:hover { background: #e7f3ff; }
+      nav a {
+        color: #1877f2;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 4px 6px;
+        border-radius: 6px;
+        transition: background 0.15s ease;
+      }
+      nav a:hover {
+        background: #e7f3ff;
+      }
 
-        hr {
-            border: none;
-            border-top: 1px solid #d3d9de;
-            margin: 18px 0;
-        }
+      hr {
+        border: none;
+        border-top: 1px solid #d3d9de;
+        margin: 18px 0;
+      }
 
-        body > button {
-            font-family: inherit;
-            border: 1px solid #ccd0d5 !important;
-            border-radius: 6px !important;
-            font-weight: 500;
-            transition: background .15s ease;
-        }
-        body > button:hover { background: #e4e6eb !important; }
+      body > button {
+        font-family: inherit;
+        border: 1px solid #ccd0d5 !important;
+        border-radius: 6px !important;
+        font-weight: 500;
+        transition: background 0.15s ease;
+      }
+      body > button:hover {
+        background: #e4e6eb !important;
+      }
 
-        [id^="chatTitle"] {
-            font-size: 17px;
-            color: #050505;
-            margin: 0 0 4px;
-        }
+      [id^="chatTitle"] {
+        font-size: 17px;
+        color: #050505;
+        margin: 0 0 4px;
+      }
 
-        [id^="chatSubtitle"] {
-            color: #65676b;
-            font-size: 14px;
-            margin: 0 0 10px;
-        }
+      [id^="chatSubtitle"] {
+        color: #65676b;
+        font-size: 14px;
+        margin: 0 0 10px;
+      }
 
-        [id^="messageBox"] {
-            border-radius: 10px !important;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
-        }
+      [id^="messageBox"] {
+        border-radius: 10px !important;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+      }
 
-        [id^="messageBox"] p {
-            margin: 6px 0;
-        }
+      [id^="messageBox"] p {
+        margin: 6px 0;
+      }
 
-        [id^="messageBox"] p b {
-            color: #1877f2;
-        }
+      [id^="messageBox"] p b {
+        color: #1877f2;
+      }
 
-        [id^="messageForm"] {
-            display: flex;
-            gap: 8px;
-        }
+      [id^="messageForm"] {
+        display: flex;
+        gap: 8px;
+      }
 
-        [id^="messageInput"] {
-            flex: 1;
-            font-family: inherit;
-            border: 1px solid #ccd0d5;
-            border-radius: 20px;
-            padding: 8px 16px;
-        }
-        [id^="messageInput"]:focus {
-            outline: none;
-            border-color: #1877f2;
-            box-shadow: 0 0 0 3px rgba(24,119,242,0.15);
-        }
+      [id^="messageInput"] {
+        flex: 1;
+        font-family: inherit;
+        border: 1px solid #ccd0d5;
+        border-radius: 20px;
+        padding: 8px 16px;
+      }
+      [id^="messageInput"]:focus {
+        outline: none;
+        border-color: #1877f2;
+        box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+      }
 
-        [id^="messageForm"] button {
-            font-family: inherit;
-            border: none;
-            background: #1877f2;
-            color: #ffffff;
-            border-radius: 20px;
-            padding: 8px 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background .15s ease;
-        }
-        [id^="messageForm"] button:hover { background: #166fe0; }
+      [id^="messageForm"] button {
+        font-family: inherit;
+        border: none;
+        background: #1877f2;
+        color: #ffffff;
+        border-radius: 20px;
+        padding: 8px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      [id^="messageForm"] button:hover {
+        background: #166fe0;
+      }
 
-        #chatContainer > div {
-            padding-bottom: 6px;
-        }
+      #chatContainer > div {
+        padding-bottom: 6px;
+      }
     </style>
   </head>
 
@@ -125,8 +133,7 @@
     <h1>💬 Tin nhắn</h1>
 
     <nav>
-    
-      <a href="index__3_.html">🏠 Trang chủ</a> |
+      <a href="index.html">🏠 Trang chủ</a> |
       <a href="banbe.html">👥 Bạn bè</a> |
       <a href="tinnhan (4).html">💬 Tin nhắn</a> |
       <a href="thongbao.html">🔔 Thông báo</a> |
@@ -154,7 +161,7 @@
           "Mai gặp nhau nói chuyện tiếp nha 😄",
           "❤️❤️❤️❤️💕",
           "nay tuân không đc 10 điểm ah!",
-          "ok , cho tao xin địa chỉ"
+          "ok , cho tao xin địa chỉ",
         ];
         const container = document.getElementById("chatContainer");
 
